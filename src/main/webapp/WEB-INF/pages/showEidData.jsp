@@ -10,6 +10,48 @@
 <html>
 <head>
     <title></title>
+    <script src="https://www.java.com/js/deployJava.js"></script>
+    <script type="text/javascript">
+        function readEid() {
+            var attributes = {
+                code :'be.fedict.eid.applet.Applet.class',
+                archive :'resources/jar/eid-applet-package-1.1.3.jar',
+                width :600,
+                height :300
+            };
+
+            var parameters = {
+                //TargetPage :'http://contribute-eid-poc.apphb.com/',
+                TargetPage :'postJson',
+                AppletService :'applet-service;jsessionid=<%=session.getId()%>',
+                BackgroundColor :'#ffffff',
+                Language : 'en',
+                HideDetailsButton : true
+            };
+            var version = '1.6';
+            deployJava.runApplet(attributes, parameters, version);
+        }
+
+        function readEidPin() {
+            var attributes = {
+                code :'be.fedict.eid.applet.Applet.class',
+                archive :'resources/jar/eid-applet-package-1.1.3.jar',
+                width :600,
+                height :300
+            };
+
+            var parameters = {
+                //TargetPage :'http://contribute-eid-poc.apphb.com/',
+                TargetPage :'postJson',
+                AppletService :'authentication-service;jsessionid=<%=session.getId()%>',
+                BackgroundColor :'#ffffff',
+                Language : 'en',
+                HideDetailsButton : true
+            };
+            var version = '1.6';
+            deployJava.runApplet(attributes, parameters, version);
+        }
+    </script>
 </head>
 <body>
 </div>
@@ -70,8 +112,8 @@
 </fieldset>
 
 <p class="buttontoolbar">
-    <a href="readEid">Uitlezen e-ID</a>
-    <a href="readEidPin">Uitlezen e-ID (JSON)</a>
+    <a href="javascript:readEid()">Uitlezen e-ID</a>
+    <a href="javascript:readEidPin()">Uitlezen e-ID (PIN)</a>
 </p>
 </form>
 </body>
