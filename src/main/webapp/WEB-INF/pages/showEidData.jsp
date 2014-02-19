@@ -22,7 +22,7 @@
 
             var parameters = {
                 //TargetPage :'http://contribute-eid-poc.apphb.com/',
-                TargetPage :'postJson',
+                TargetPage :'showEidData',
                 AppletService :'applet-service;jsessionid=<%=session.getId()%>',
                 BackgroundColor :'#ffffff',
                 Language : 'en',
@@ -42,7 +42,7 @@
 
             var parameters = {
                 //TargetPage :'http://contribute-eid-poc.apphb.com/',
-                TargetPage :'postJson',
+                TargetPage :'showEidData',
                 AppletService :'authentication-service;jsessionid=<%=session.getId()%>',
                 BackgroundColor :'#ffffff',
                 Language : 'en',

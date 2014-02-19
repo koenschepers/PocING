@@ -63,6 +63,7 @@ public class EidController {
 
 	private JSONObject eidDataToJson(EIdData eIdData) {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("MM/dd/yyyy");
 
 		JSONObject eidJSONObject = new JSONObject();
 
@@ -84,9 +85,9 @@ public class EidController {
 		cardJSONObject.put("chipNumber", identity.chipNumber);
 		cardJSONObject.put("cardDeliveryMunicipality",
 				identity.cardDeliveryMunicipality);
-		cardJSONObject.put("cardValidityDateBegin", simpleDateFormat
+		cardJSONObject.put("cardValidityDateBegin", simpleDateFormat2
 				.format(identity.cardValidityDateBegin.getTime()));
-		cardJSONObject.put("cardValidityDateEnd", simpleDateFormat
+		cardJSONObject.put("cardValidityDateEnd", simpleDateFormat2
 				.format(identity.cardValidityDateEnd.getTime()));
 
 		Address address = eIdData.address;

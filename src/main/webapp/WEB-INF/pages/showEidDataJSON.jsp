@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Test Autosubmit</title>
+    <title></title>
     <script src="resources/js/jquery-1.11.0.min.js" ></script>
     <script type="text/javascript">
         function submitEidData() {
             var data = $('#eidData').val();
-            $('<input type="hidden" name="json"/>').val(data).appendTo('#eidForm');
+            $('<input type="hidden" name="eidData"/>').val(data).appendTo('#eidForm');
             $("#eidForm").submit();
         }
 
