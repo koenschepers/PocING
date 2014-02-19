@@ -29,6 +29,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class EidController {
@@ -36,6 +38,11 @@ public class EidController {
 	@RequestMapping(value = "/showEidData", method = RequestMethod.GET)
 	public String getEidData(ModelMap model) {
 		return "showEidData";
+	}
+
+	@RequestMapping(value = "/showEidDataJSON", method = RequestMethod.GET)
+	public String getEidDataJSON(ModelMap model) {
+		return "showEidDataJSON";
 	}
 
 	@RequestMapping(value = "/postJson", method = RequestMethod.GET)
@@ -48,18 +55,10 @@ public class EidController {
 
 		JSONObject eidJSONObject = eidDataToJson(eIdData);
 		System.out.println("eidJSONObject = " + eidJSONObject.toJSONString());
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("eidData", eidJSONObject.toJSONString());
 
-		HttpClient httpClient = HttpClientBuilder.create().build();
-
-		HttpPost postRequest = new HttpPost("https://qfbam.cronos.be");
-		postRequest.addHeader("content-type", "application/json");
-		postRequest.setEntity(new StringEntity(eidJSONObject.toJSONString()));
-		HttpResponse response = httpClient.execute(postRequest);
-		System.out.println(response.getStatusLine().getStatusCode() + " "
-				+ response.getStatusLine().getReasonPhrase());
-
-		return new ModelAndView("redirect:https://qfbam.cronos.be");
-		//return new ModelAndView("showEidData");
+		return new ModelAndView("showEidDataJSON", model);
 	}
 
 	private JSONObject eidDataToJson(EIdData eIdData) {
