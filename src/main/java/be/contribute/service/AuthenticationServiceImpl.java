@@ -19,7 +19,7 @@ import java.util.List;
 public class AuthenticationServiceImpl implements AuthenticationService, Serializable {
 	@Override
 	public void validateCertificateChain(List<X509Certificate> certificateChain) throws ExpiredCertificateSecurityException, RevokedCertificateSecurityException, TrustCertificateSecurityException, CertificateSecurityException, SecurityException {
-		XKMS2Client client = new XKMS2Client("http://www.e-contract.be/eid-trust-service-ws/xkms2");
+		XKMS2Client client = new XKMS2Client("https://www.e-contract.be/eid-trust-service-ws/xkms2");
 		try {
 			client.validate(certificateChain);
 		} catch (CertificateEncodingException e) {
